@@ -1,0 +1,20 @@
+{
+  "name": "crimevision-ai",
+  "version": "2.0.0",
+  "description": "Crime Data Analytics & Property Crime Risk Prediction",
+  "scripts": {
+    "start": "python -m uvicorn app:app --host 127.0.0.1 --port 8000 --reload",
+    "train": "python backend/model_trainer.py",
+    "generate-data": "python backend/data_generator.py"
+  },
+  "keywords": [
+    "crime-analytics",
+    "risk-prediction",
+    "machine-learning",
+    "india-map",
+    "leaflet",
+    "xgboost"
+  ],
+  "author": "CrimeVision AI Team",
+  "license": "MIT"
+}

@@ -1,0 +1,478 @@
+{
+  "best_model_name": "Logistic Regression",
+  "primary_metric": "f1_weighted",
+  "best_score": 0.15309474571914755,
+  "trained_at_utc": "2026-08-27T04:44:27.222369+00:00",
+  "n_train": 2240,
+  "n_test": 560,
+  "class_labels": [
+    "Assault",
+    "Burglary",
+    "Fraud",
+    "Harassment",
+    "Robbery",
+    "Theft",
+    "Vandalism",
+    "Vehicle Theft"
+  ],
+  "class_counts": {
+    "Assault": 385,
+    "Theft": 364,
+    "Vandalism": 362,
+    "Harassment": 353,
+    "Fraud": 348,
+    "Robbery": 342,
+    "Vehicle Theft": 327,
+    "Burglary": 319
+  },
+  "metrics": [
+    {
+      "Model": "Logistic Regression",
+      "Accuracy": 0.15892857142857142,
+      "Precision": 0.15508495580194476,
+      "Recall": 0.15892857142857142,
+      "F1": 0.15309474571914755
+    },
+    {
+      "Model": "Decision Tree",
+      "Accuracy": 0.13214285714285715,
+      "Precision": 0.13534452338848182,
+      "Recall": 0.13214285714285715,
+      "F1": 0.1252456409972051
+    },
+    {
+      "Model": "Random Forest",
+      "Accuracy": 0.14821428571428572,
+      "Precision": 0.1468237282375433,
+      "Recall": 0.14821428571428572,
+      "F1": 0.147053535147472
+    },
+    {
+      "Model": "K-Nearest Neighbors",
+      "Accuracy": 0.14285714285714285,
+      "Precision": 0.14218775541738993,
+      "Recall": 0.14285714285714285,
+      "F1": 0.1357222037098534
+    }
+  ],
+  "classification_reports": {
+    "Logistic Regression": "               precision    recall  f1-score   support\n\n      Assault       0.19      0.13      0.15        77\n     Burglary       0.16      0.23      0.19        64\n        Fraud       0.14      0.09      0.11        70\n   Harassment       0.12      0.10      0.11        71\n      Robbery       0.21      0.26      0.24        68\n        Theft       0.17      0.19      0.18        73\n    Vandalism       0.09      0.07      0.08        72\nVehicle Theft       0.14      0.22      0.17        65\n\n     accuracy                           0.16       560\n    macro avg       0.16      0.16      0.15       560\n weighted avg       0.16      0.16      0.15       560\n",
+    "Decision Tree": "               precision    recall  f1-score   support\n\n      Assault       0.11      0.05      0.07        77\n     Burglary       0.12      0.23      0.16        64\n        Fraud       0.11      0.10      0.11        70\n   Harassment       0.16      0.13      0.14        71\n      Robbery       0.20      0.13      0.16        68\n        Theft       0.12      0.25      0.16        73\n    Vandalism       0.10      0.06      0.07        72\nVehicle Theft       0.16      0.12      0.14        65\n\n     accuracy                           0.13       560\n    macro avg       0.14      0.13      0.13       560\n weighted avg       0.14      0.13      0.13       560\n",
+    "Random Forest": "               precision    recall  f1-score   support\n\n      Assault       0.14      0.16      0.15        77\n     Burglary       0.15      0.16      0.15        64\n        Fraud       0.09      0.09      0.09        70\n   Harassment       0.18      0.21      0.20        71\n      Robbery       0.09      0.07      0.08        68\n        Theft       0.15      0.16      0.16        73\n    Vandalism       0.17      0.17      0.17        72\nVehicle Theft       0.20      0.17      0.18        65\n\n     accuracy                           0.15       560\n    macro avg       0.15      0.15      0.15       560\n weighted avg       0.15      0.15      0.15       560\n",
+    "K-Nearest Neighbors": "               precision    recall  f1-score   support\n\n      Assault       0.17      0.27      0.21        77\n     Burglary       0.13      0.22      0.16        64\n        Fraud       0.12      0.11      0.12        70\n   Harassment       0.15      0.18      0.17        71\n      Robbery       0.13      0.10      0.12        68\n        Theft       0.11      0.08      0.09        73\n    Vandalism       0.16      0.08      0.11        72\nVehicle Theft       0.16      0.08      0.10        65\n\n     accuracy                           0.14       560\n    macro avg       0.14      0.14      0.13       560\n weighted avg       0.14      0.14      0.14       560\n"
+  },
+  "confusion_matrices": {
+    "Logistic Regression": [
+      [
+        10,
+        11,
+        4,
+        8,
+        11,
+        11,
+        7,
+        15
+      ],
+      [
+        2,
+        15,
+        4,
+        4,
+        11,
+        10,
+        7,
+        11
+      ],
+      [
+        9,
+        11,
+        6,
+        6,
+        8,
+        8,
+        8,
+        14
+      ],
+      [
+        4,
+        10,
+        7,
+        7,
+        12,
+        10,
+        10,
+        11
+      ],
+      [
+        7,
+        10,
+        4,
+        6,
+        18,
+        7,
+        8,
+        8
+      ],
+      [
+        7,
+        10,
+        7,
+        9,
+        8,
+        14,
+        3,
+        15
+      ],
+      [
+        7,
+        14,
+        9,
+        8,
+        9,
+        10,
+        5,
+        10
+      ],
+      [
+        7,
+        10,
+        2,
+        8,
+        8,
+        10,
+        6,
+        14
+      ]
+    ],
+    "Decision Tree": [
+      [
+        4,
+        14,
+        9,
+        6,
+        5,
+        18,
+        8,
+        13
+      ],
+      [
+        4,
+        15,
+        6,
+        5,
+        4,
+        20,
+        6,
+        4
+      ],
+      [
+        5,
+        19,
+        7,
+        6,
+        6,
+        19,
+        3,
+        5
+      ],
+      [
+        6,
+        13,
+        9,
+        9,
+        8,
+        19,
+        4,
+        3
+      ],
+      [
+        6,
+        15,
+        4,
+        3,
+        9,
+        16,
+        4,
+        11
+      ],
+      [
+        4,
+        17,
+        10,
+        9,
+        6,
+        18,
+        6,
+        3
+      ],
+      [
+        6,
+        17,
+        8,
+        7,
+        6,
+        22,
+        4,
+        2
+      ],
+      [
+        2,
+        13,
+        10,
+        11,
+        1,
+        16,
+        4,
+        8
+      ]
+    ],
+    "Random Forest": [
+      [
+        12,
+        10,
+        8,
+        10,
+        10,
+        10,
+        7,
+        10
+      ],
+      [
+        8,
+        10,
+        8,
+        6,
+        5,
+        9,
+        9,
+        9
+      ],
+      [
+        12,
+        12,
+        6,
+        10,
+        7,
+        5,
+        12,
+        6
+      ],
+      [
+        7,
+        5,
+        9,
+        15,
+        8,
+        14,
+        8,
+        5
+      ],
+      [
+        14,
+        4,
+        11,
+        11,
+        5,
+        11,
+        10,
+        2
+      ],
+      [
+        10,
+        8,
+        11,
+        14,
+        4,
+        12,
+        9,
+        5
+      ],
+      [
+        13,
+        10,
+        8,
+        11,
+        3,
+        8,
+        12,
+        7
+      ],
+      [
+        8,
+        8,
+        6,
+        5,
+        13,
+        9,
+        5,
+        11
+      ]
+    ],
+    "K-Nearest Neighbors": [
+      [
+        21,
+        17,
+        8,
+        9,
+        7,
+        8,
+        5,
+        2
+      ],
+      [
+        16,
+        14,
+        5,
+        9,
+        1,
+        10,
+        6,
+        3
+      ],
+      [
+        17,
+        11,
+        8,
+        13,
+        6,
+        5,
+        5,
+        5
+      ],
+      [
+        15,
+        13,
+        6,
+        13,
+        9,
+        10,
+        4,
+        1
+      ],
+      [
+        15,
+        10,
+        12,
+        11,
+        7,
+        4,
+        5,
+        4
+      ],
+      [
+        11,
+        20,
+        10,
+        15,
+        4,
+        6,
+        3,
+        4
+      ],
+      [
+        15,
+        9,
+        11,
+        11,
+        7,
+        6,
+        6,
+        7
+      ],
+      [
+        10,
+        15,
+        8,
+        5,
+        12,
+        7,
+        3,
+        5
+      ]
+    ]
+  },
+  "feature_names": [
+    "num__Year",
+    "num__Month",
+    "num__Day",
+    "num__DayOfWeek",
+    "num__Hour",
+    "num__Weekend",
+    "num__Latitude",
+    "num__Longitude",
+    "cat__Area_Airport Road",
+    "cat__Area_Harbor View",
+    "cat__Area_Hillside",
+    "cat__Area_Industrial Zone",
+    "cat__Area_Lakeside",
+    "cat__Area_Market District",
+    "cat__Area_Old Town",
+    "cat__Area_Riverside",
+    "cat__Area_Tech Park",
+    "cat__Area_University",
+    "cat__District_Central",
+    "cat__District_East",
+    "cat__District_North",
+    "cat__District_South",
+    "cat__District_West"
+  ],
+  "feature_importance": {
+    "kind": "mean_abs_coefficient",
+    "features": [
+      "cat__District_North",
+      "num__Longitude",
+      "cat__Area_Riverside",
+      "cat__Area_Lakeside",
+      "cat__District_South",
+      "cat__Area_Market District",
+      "cat__Area_Old Town",
+      "cat__Area_Industrial Zone",
+      "num__Latitude",
+      "cat__Area_Tech Park",
+      "cat__Area_Harbor View",
+      "cat__Area_Hillside",
+      "cat__Area_University",
+      "cat__Area_Airport Road",
+      "num__DayOfWeek",
+      "cat__District_Central",
+      "cat__District_East",
+      "num__Weekend",
+      "cat__District_West",
+      "num__Month",
+      "num__Hour",
+      "num__Year",
+      "num__Day"
+    ],
+    "scores": [
+      0.17535407380804252,
+      0.15318273894838588,
+      0.1483283666724647,
+      0.14615194306540855,
+      0.13917283991424648,
+      0.13894220872439317,
+      0.10982585198204634,
+      0.1076779941439247,
+      0.10463538116035544,
+      0.1004299641615439,
+      0.09887205094512982,
+      0.08292136977528508,
+      0.08289899534001084,
+      0.07825049055538538,
+      0.07709309240513743,
+      0.07652652321293574,
+      0.07239677558591853,
+      0.0648190662580714,
+      0.06107123378026351,
+      0.053091314209021634,
+      0.051411912949294925,
+      0.037003504431285125,
+      0.024505614408677885
+    ]
+  },
+  "notes": [
+    "Metrics are computed on a held-out test set (20%).",
+    "Primary selection metric is weighted F1 because crime types can be imbalanced.",
+    "Performance on synthetic data may be modest; that is expected and not hidden."
+  ],
+  "disclaimer": "Educational/research use only. Do not use to target individuals or communities."
+}

@@ -1,0 +1,322 @@
+{
+  "best_model_name": "XGBoost",
+  "classes": [
+    "Burglary",
+    "Theft",
+    "Vehicle Theft"
+  ],
+  "n_train": 4160,
+  "n_test": 1040,
+  "metrics": [
+    {
+      "model": "Logistic Regression",
+      "accuracy": 47.98,
+      "precision": 41.83,
+      "recall": 47.98,
+      "f1_score": 41.9
+    },
+    {
+      "model": "Random Forest",
+      "accuracy": 47.5,
+      "precision": 42.53,
+      "recall": 47.5,
+      "f1_score": 42.09
+    },
+    {
+      "model": "XGBoost",
+      "accuracy": 47.12,
+      "precision": 43.37,
+      "recall": 47.12,
+      "f1_score": 43.51
+    }
+  ],
+  "confusion_matrices": {
+    "Logistic Regression": [
+      [
+        12,
+        169,
+        107
+      ],
+      [
+        11,
+        330,
+        86
+      ],
+      [
+        27,
+        141,
+        157
+      ]
+    ],
+    "Random Forest": [
+      [
+        19,
+        173,
+        96
+      ],
+      [
+        14,
+        332,
+        81
+      ],
+      [
+        36,
+        146,
+        143
+      ]
+    ],
+    "XGBoost": [
+      [
+        32,
+        165,
+        91
+      ],
+      [
+        32,
+        302,
+        93
+      ],
+      [
+        47,
+        122,
+        156
+      ]
+    ]
+  },
+  "classification_reports": {
+    "Logistic Regression": {
+      "Burglary": {
+        "precision": 0.24,
+        "recall": 0.041666666666666664,
+        "f1-score": 0.07100591715976332,
+        "support": 288.0
+      },
+      "Theft": {
+        "precision": 0.515625,
+        "recall": 0.7728337236533958,
+        "f1-score": 0.6185567010309279,
+        "support": 427.0
+      },
+      "Vehicle Theft": {
+        "precision": 0.44857142857142857,
+        "recall": 0.48307692307692307,
+        "f1-score": 0.4651851851851852,
+        "support": 325.0
+      },
+      "accuracy": 0.4798076923076923,
+      "macro avg": {
+        "precision": 0.4013988095238095,
+        "recall": 0.4325257711323285,
+        "f1-score": 0.3849159344586255,
+        "support": 1040.0
+      },
+      "weighted avg": {
+        "precision": 0.41834383585164836,
+        "recall": 0.4798076923076923,
+        "f1-score": 0.41899865448788776,
+        "support": 1040.0
+      }
+    },
+    "Random Forest": {
+      "Burglary": {
+        "precision": 0.2753623188405797,
+        "recall": 0.06597222222222222,
+        "f1-score": 0.10644257703081232,
+        "support": 288.0
+      },
+      "Theft": {
+        "precision": 0.5099846390168971,
+        "recall": 0.7775175644028103,
+        "f1-score": 0.6159554730983302,
+        "support": 427.0
+      },
+      "Vehicle Theft": {
+        "precision": 0.446875,
+        "recall": 0.44,
+        "f1-score": 0.4434108527131783,
+        "support": 325.0
+      },
+      "accuracy": 0.475,
+      "macro avg": {
+        "precision": 0.410740652619159,
+        "recall": 0.42782992887501087,
+        "f1-score": 0.38860296761410695,
+        "support": 1040.0
+      },
+      "weighted avg": {
+        "precision": 0.4252905420060596,
+        "recall": 0.475,
+        "f1-score": 0.42093940031696536,
+        "support": 1040.0
+      }
+    },
+    "XGBoost": {
+      "Burglary": {
+        "precision": 0.2882882882882883,
+        "recall": 0.1111111111111111,
+        "f1-score": 0.16040100250626566,
+        "support": 288.0
+      },
+      "Theft": {
+        "precision": 0.5127334465195246,
+        "recall": 0.7072599531615925,
+        "f1-score": 0.594488188976378,
+        "support": 427.0
+      },
+      "Vehicle Theft": {
+        "precision": 0.4588235294117647,
+        "recall": 0.48,
+        "f1-score": 0.4691729323308271,
+        "support": 325.0
+      },
+      "accuracy": 0.47115384615384615,
+      "macro avg": {
+        "precision": 0.41994842140652583,
+        "recall": 0.43279035475756783,
+        "f1-score": 0.4080207079378236,
+        "support": 1040.0
+      },
+      "weighted avg": {
+        "precision": 0.43373255360546875,
+        "recall": 0.47115384615384615,
+        "f1-score": 0.4351184119444584,
+        "support": 1040.0
+      }
+    }
+  },
+  "feature_importance": {
+    "features": [
+      "Latitude",
+      "Hour",
+      "Longitude",
+      "Year",
+      "Time_Window_9 PM \u2013 12 AM",
+      "Time_Window_12 AM \u2013 3 AM",
+      "Time_Window_3 PM \u2013 6 PM",
+      "Time_Window_9 AM \u2013 12 PM",
+      "Day_Monday",
+      "Day_Saturday",
+      "Day_Thursday",
+      "Day_Sunday",
+      "Day_Wednesday",
+      "Day_Tuesday",
+      "Day_Friday"
+    ],
+    "scores": [
+      0.1469,
+      0.1446,
+      0.1376,
+      0.0789,
+      0.0468,
+      0.0336,
+      0.0229,
+      0.0207,
+      0.0205,
+      0.0201,
+      0.02,
+      0.02,
+      0.0195,
+      0.0184,
+      0.0182
+    ]
+  },
+  "clusters": [
+    {
+      "cluster_id": 1,
+      "center": [
+        22.561824,
+        88.373337
+      ],
+      "city": "Kolkata",
+      "state": "West Bengal",
+      "crime_count": 404,
+      "dominant_crime": "Theft",
+      "risk_level": "Low"
+    },
+    {
+      "cluster_id": 2,
+      "center": [
+        19.081278,
+        72.862548
+      ],
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "crime_count": 1141,
+      "dominant_crime": "Theft",
+      "risk_level": "High"
+    },
+    {
+      "cluster_id": 3,
+      "center": [
+        28.661404,
+        77.392966
+      ],
+      "city": "Ghaziabad",
+      "state": "Uttar Pradesh",
+      "crime_count": 846,
+      "dominant_crime": "Theft",
+      "risk_level": "High"
+    },
+    {
+      "cluster_id": 4,
+      "center": [
+        12.953649,
+        77.653707
+      ],
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "crime_count": 852,
+      "dominant_crime": "Theft",
+      "risk_level": "High"
+    },
+    {
+      "cluster_id": 5,
+      "center": [
+        17.418209,
+        78.439585
+      ],
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "crime_count": 374,
+      "dominant_crime": "Theft",
+      "risk_level": "Low"
+    },
+    {
+      "cluster_id": 6,
+      "center": [
+        13.038988,
+        80.253499
+      ],
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "crime_count": 273,
+      "dominant_crime": "Theft",
+      "risk_level": "Low"
+    },
+    {
+      "cluster_id": 7,
+      "center": [
+        18.544864,
+        73.833376
+      ],
+      "city": "Pune",
+      "state": "Maharashtra",
+      "crime_count": 488,
+      "dominant_crime": "Theft",
+      "risk_level": "Medium"
+    },
+    {
+      "cluster_id": 8,
+      "center": [
+        28.631308,
+        77.199686
+      ],
+      "city": "New Delhi",
+      "state": "Delhi NCT",
+      "crime_count": 822,
+      "dominant_crime": "Theft",
+      "risk_level": "High"
+    }
+  ],
+  "trained_date": "2026-10-01"
+}

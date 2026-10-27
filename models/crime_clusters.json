@@ -1,0 +1,98 @@
+[
+  {
+    "cluster_id": 1,
+    "center": [
+      22.561824,
+      88.373337
+    ],
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "crime_count": 404,
+    "dominant_crime": "Theft",
+    "risk_level": "Low"
+  },
+  {
+    "cluster_id": 2,
+    "center": [
+      19.081278,
+      72.862548
+    ],
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "crime_count": 1141,
+    "dominant_crime": "Theft",
+    "risk_level": "High"
+  },
+  {
+    "cluster_id": 3,
+    "center": [
+      28.661404,
+      77.392966
+    ],
+    "city": "Ghaziabad",
+    "state": "Uttar Pradesh",
+    "crime_count": 846,
+    "dominant_crime": "Theft",
+    "risk_level": "High"
+  },
+  {
+    "cluster_id": 4,
+    "center": [
+      12.953649,
+      77.653707
+    ],
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "crime_count": 852,
+    "dominant_crime": "Theft",
+    "risk_level": "High"
+  },
+  {
+    "cluster_id": 5,
+    "center": [
+      17.418209,
+      78.439585
+    ],
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "crime_count": 374,
+    "dominant_crime": "Theft",
+    "risk_level": "Low"
+  },
+  {
+    "cluster_id": 6,
+    "center": [
+      13.038988,
+      80.253499
+    ],
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "crime_count": 273,
+    "dominant_crime": "Theft",
+    "risk_level": "Low"
+  },
+  {
+    "cluster_id": 7,
+    "center": [
+      18.544864,
+      73.833376
+    ],
+    "city": "Pune",
+    "state": "Maharashtra",
+    "crime_count": 488,
+    "dominant_crime": "Theft",
+    "risk_level": "Medium"
+  },
+  {
+    "cluster_id": 8,
+    "center": [
+      28.631308,
+      77.199686
+    ],
+    "city": "New Delhi",
+    "state": "Delhi NCT",
+    "crime_count": 822,
+    "dominant_crime": "Theft",
+    "risk_level": "High"
+  }
+]

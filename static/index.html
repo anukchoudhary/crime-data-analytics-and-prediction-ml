@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrimeVision AI — Crime Data Analytics & Property Crime Risk Prediction</title>
+  <meta name="description" content="AI-powered property crime analytics platform for India. Discover patterns, identify hotspots, and forecast zone-level risk.">
+
+  <!-- Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ===============================================================
+         COLLAPSIBLE SIDEBAR
+         =============================================================== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <a class="brand-wrapper" onclick="CrimeVisionApp.showPage('home')">
+          <div class="brand-icon-box">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <span class="brand-title">CrimeVision <span>AI</span></span>
+        </a>
+        <button class="btn-sidebar-toggle" id="sidebarToggleBtn" title="Toggle Sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="menu-category">Main Navigation</li>
+        <li class="menu-item"><a class="menu-link active" data-page="home"><i class="fa-solid fa-house"></i> <span>Home</span></a></li>
+        <li class="menu-item"><a class="menu-link" data-page="dashboard"><i class="fa-solid fa-gauge-high"></i> <span>Dashboard</span></a></li>
+        <li class="menu-item"><a class="menu-link" data-page="analytics"><i class="fa-solid fa-chart-line"></i> <span>Crime Analytics</span></a></li>
+        <li class="menu-item"><a class="menu-link" data-page="map"><i class="fa-solid fa-map-location-dot"></i> <span>India Crime Map</span></a></li>
+
+        <li class="menu-category">Risk Intelligence</li>
+        <li class="menu-item"><a class="menu-link" data-page="prediction"><i class="fa-solid fa-radar"></i> <span>Prediction</span></a></li>
+        <li class="menu-item"><a class="menu-link" data-page="trends"><i class="fa-solid fa-arrow-trend-up"></i> <span>Crime Trends</span></a></li>
+        <li class="menu-item"><a class="menu-link" data-page="hotspots"><i class="fa-solid fa-fire"></i> <span>Hotspots & Clusters</span></a></li>
+
+        <li class="menu-category">Platform & Governance</li>
+        <li class="menu-item"><a class="menu-link" data-page="data"><i class="fa-solid fa-database"></i> <span>Data Explorer</span></a></li>
+        <li class="menu-item"><a class="menu-link" data-page="model"><i class="fa-solid fa-brain"></i> <span>Model Performance</span></a></li>
+        <li class="menu-item"><a class="menu-link" data-page="about"><i class="fa-solid fa-circle-info"></i> <span>About Project</span></a></li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="status-badge-box">
+          <i class="fa-solid fa-circle" style="color:var(--risk-low); font-size:8px;"></i>
+          <span>System Online · v2.0</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===============================================================
+         MAIN CONTENT & TOP HEADER
+         =============================================================== -->
+    <div class="main-wrapper" id="mainWrapper">
+
+      <!-- Top Dashboard Header -->
+      <header class="header">
+        <div class="header-left">
+          <div class="header-greeting">
+            Good Morning 👋 <span style="font-weight:400; color:var(--text-secondary);">Crime Intelligence Overview</span>
+          </div>
+          <div class="header-sub">
+            <span>Last data refresh: Dynamic</span>
+            <span class="badge-demo">Demo Dataset — For Educational Demonstration</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button class="header-btn" id="mobileMenuBtn" style="display:none;" title="Open Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <button class="header-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode">
+            <i class="fa-solid fa-sun"></i>
+          </button>
+          <button class="header-btn" title="System Notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notif-badge"></span>
+          </button>
+          <button class="btn-header-cta" onclick="CrimeVisionApp.showPage('prediction')">
+            <i class="fa-solid fa-crosshairs"></i> Predict Risk
+          </button>
+        </div>
+      </header>
+
+      <!-- Pages View Router -->
+      <div class="page-container">
+
+        <!-- ===========================================================
+             1. HOME / LANDING PAGE
+             =========================================================== -->
+        <section class="page-view active" id="page-home">
+          <div class="hero-wrapper">
+            <div class="hero-content-grid">
+              <div>
+                <div class="hero-tag">
+                  <i class="fa-solid fa-shield-halved"></i> Property Crime Intelligence
+                </div>
+                <h1 class="hero-heading">
+                  Predict Crime Risk. <br/>
+                  <span class="highlight">Understand Patterns.</span> <br/>
+                  Plan Smarter.
+                </h1>
+                <p class="hero-subtitle-text">
+                  CrimeVision AI analyzes historical property-crime data to identify hotspots, discover temporal patterns, and estimate crime risk for selected locations and time windows across India.
+                </p>
+                <div class="hero-ctas">
+                  <button class="btn-header-cta" style="padding:12px 28px; font-size:1rem;" onclick="CrimeVisionApp.showPage('dashboard')">
+                    <i class="fa-solid fa-gauge-high"></i> Explore Dashboard
+                  </button>
+                  <button class="btn-secondary" style="padding:12px 28px; font-size:1rem;" onclick="CrimeVisionApp.showPage('map')">
+                    <i class="fa-solid fa-map-location-dot"></i> Explore Crime Map
+                  </button>
+                </div>
+              </div>
+
+              <!-- Dashboard Preview Visual with Floating Pills -->
+              <div class="hero-preview-box">
+                <div class="floating-pill pill-1">
+                  <i class="fa-solid fa-triangle-exclamation" style="color:var(--risk-high);"></i>
+                  <div><b>68%</b> <small style="color:var(--text-muted);">Elevated Risk</small></div>
+                </div>
+                <div class="floating-pill pill-2">
+                  <i class="fa-solid fa-location-dot" style="color:var(--risk-med);"></i>
+                  <div><b>Zone 4</b> <small style="color:var(--text-muted);">High-Risk Area</small></div>
+                </div>
+                <div class="floating-pill pill-3">
+                  <i class="fa-solid fa-clock" style="color:var(--primary-blue);"></i>
+                  <div><b>9 PM – 12 AM</b> <small style="color:var(--text-muted);">Peak Window</small></div>
+                </div>
+
+                <div style="text-align:center; padding:50px 20px;">
+                  <i class="fa-solid fa-earth-asia" style="font-size:4.5rem; color:var(--primary-blue); opacity:0.8; margin-bottom:16px;"></i>
+                  <h3 style="font-size:1.3rem;">National Property Crime Network</h3>
+                  <p style="font-size:0.88rem; color:var(--text-secondary); max-width:320px; margin:8px auto 0 auto;">
+                    Synthesizing spatial density, diurnal shifts, and machine learning models for municipal security.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic Landing Page Stats -->
+            <div class="stats-row">
+              <div class="stat-box">
+                <div class="stat-icon"><i class="fa-solid fa-database"></i></div>
+                <div>
+                  <div class="stat-val" id="statLandingRecords">5,200</div>
+                  <div class="stat-lbl">Total Crime Records</div>
+                </div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-icon"><i class="fa-solid fa-earth-asia"></i></div>
+                <div>
+                  <div class="stat-val" id="statLandingStates">7 States</div>
+                  <div class="stat-lbl">Indian States / Regions</div>
+                </div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <div class="stat-val" id="statLandingZones">36 Sectors</div>
+                  <div class="stat-lbl">Municipal Risk Zones</div>
+                </div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <div>
+                  <div class="stat-val">3 Types</div>
+                  <div class="stat-lbl">Theft, Burglary, Vehicle</div>
+                </div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                <div>
+                  <div class="stat-val" id="statLandingPeriod">2021 – 2025</div>
+                  <div class="stat-lbl">Verified Data Period</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ===========================================================
+             2. MAIN DASHBOARD PAGE
+             =========================================================== -->
+        <section class="page-view" id="page-dashboard">
+          <div class="card-header" style="margin-bottom:18px;">
+            <div>
+              <h2 style="font-size:1.75rem; font-weight:800;">Crime Intelligence Dashboard</h2>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Monitor property-crime patterns, hotspots, trends, and forecast risk across India.</p>
+            </div>
+          </div>
+
+          <!-- Powerful Global Filters Panel -->
+          <div class="filter-panel">
+            <div class="filter-item">
+              <span class="filter-lbl">State</span>
+              <select class="form-select" id="filterState"><option value="all">All States</option></select>
+            </div>
+            <div class="filter-item">
+              <span class="filter-lbl">City</span>
+              <select class="form-select" id="filterCity"><option value="all">All Cities</option></select>
+            </div>
+            <div class="filter-item">
+              <span class="filter-lbl">Area / Zone</span>
+              <select class="form-select" id="filterZone"><option value="all">All Zones</option></select>
+            </div>
+            <div class="filter-item">
+              <span class="filter-lbl">Crime Type</span>
+              <select class="form-select" id="filterCrimeType">
+                <option value="all">All Property Crimes</option>
+                <option value="Theft">Theft</option>
+                <option value="Burglary">Burglary</option>
+                <option value="Vehicle Theft">Vehicle Theft</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <span class="filter-lbl">Year</span>
+              <select class="form-select" id="filterYear"><option value="all">All Years</option></select>
+            </div>
+            <div class="filter-item">
+              <span class="filter-lbl">Time Window</span>
+              <select class="form-select" id="filterTimeWindow">
+                <option value="all">All Windows</option>
+                <option value="12 AM – 3 AM">12 AM – 3 AM</option>
+                <option value="3 AM – 6 AM">3 AM – 6 AM</option>
+                <option value="6 AM – 9 AM">6 AM – 9 AM</option>
+                <option value="9 AM – 12 PM">9 AM – 12 PM</option>
+                <option value="12 PM – 3 PM">12 PM – 3 PM</option>
+                <option value="3 PM – 6 PM">3 PM – 6 PM</option>
+                <option value="6 PM – 9 PM">6 PM – 9 PM</option>
+                <option value="9 PM – 12 AM">9 PM – 12 AM</option>
+              </select>
+            </div>
+            <div class="filter-actions">
+              <button class="btn-apply" id="btnApplyFilters"><i class="fa-solid fa-filter"></i> Apply</button>
+              <button class="btn-reset" id="btnResetFilters"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+            </div>
+          </div>
+
+          <!-- 6 Premium KPI Cards -->
+          <div class="stats-row" style="margin:20px 0 28px 0;">
+            <div class="stat-box">
+              <div class="stat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div>
+                <div class="stat-val" id="kpiTotalCrimes">-</div>
+                <div class="stat-lbl">Total Crimes</div>
+              </div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon" style="color:var(--risk-high);"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div>
+                <div class="stat-val" id="kpiHighRiskZones">-</div>
+                <div class="stat-lbl">High-Risk Zones</div>
+              </div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon" style="color:var(--accent-cyan);"><i class="fa-solid fa-tag"></i></div>
+              <div>
+                <div class="stat-val" id="kpiCommonCrime">-</div>
+                <div class="stat-lbl">Most Common Crime</div>
+              </div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon" style="color:var(--accent-purple);"><i class="fa-solid fa-clock"></i></div>
+              <div>
+                <div class="stat-val" id="kpiPeakHour">-</div>
+                <div class="stat-lbl">Peak Crime Hour</div>
+              </div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon" style="color:var(--risk-low);"><i class="fa-solid fa-brain"></i></div>
+              <div>
+                <div class="stat-val" id="kpiModelAcc">-</div>
+                <div class="stat-lbl">Model Accuracy</div>
+              </div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon"><i class="fa-solid fa-gauge-high"></i></div>
+              <div>
+                <div class="stat-val" id="kpiCurrentRisk">-</div>
+                <div class="stat-lbl">Current Risk</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row 1 -->
+          <div style="display:grid; grid-template-columns:1fr 1.6fr; gap:24px; margin-bottom:24px;">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Property Crime Typology</h3>
+                  <p class="card-subtitle">Theft vs Burglary vs Vehicle Theft distribution</p>
+                </div>
+              </div>
+              <div style="height:260px;"><canvas id="dashCategoryDonut"></canvas></div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Yearly Incident Trend (2021–2025)</h3>
+                  <p class="card-subtitle">Longitudinal verification across tracking years</p>
+                </div>
+              </div>
+              <div style="height:260px;"><canvas id="dashYearlyTrend"></canvas></div>
+            </div>
+          </div>
+
+          <!-- Top 5 Hotspots Table -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title"><i class="fa-solid fa-fire" style="color:var(--risk-high);"></i> Top Priority Hotspot Zones</h3>
+                <p class="card-subtitle">Municipal sectors ranking highest in property crime density</p>
+              </div>
+              <button class="btn-secondary" style="font-size:0.8rem; padding:6px 14px;" onclick="CrimeVisionApp.showPage('hotspots')">
+                View All Hotspots →
+              </button>
+            </div>
+            <div class="data-table-container">
+              <table class="crime-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Zone</th>
+                    <th>Incidents</th>
+                    <th>Risk Level</th>
+                    <th>Peak Time Window</th>
+                  </tr>
+                </thead>
+                <tbody id="dashHotspotsBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===========================================================
+             3. CRIME ANALYTICS PAGE
+             =========================================================== -->
+        <section class="page-view" id="page-analytics">
+          <div class="card-header" style="margin-bottom:20px;">
+            <div>
+              <h2 style="font-size:1.75rem; font-weight:800;">Crime Analytics Dashboard</h2>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Multi-dimensional exploratory decomposition across temporal, seasonal, and geographic coordinates.</p>
+            </div>
+          </div>
+
+          <!-- Grid of Analytics Charts -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(460px, 1fr)); gap:24px; margin-bottom:28px;">
+            <div class="card">
+              <h3 class="card-title">Crime by Category</h3>
+              <p class="card-subtitle">Theft, Burglary, Vehicle Theft comparison</p>
+              <div style="height:240px; margin-top:14px;"><canvas id="anaCategoryChart"></canvas></div>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">Crime by Year</h3>
+              <p class="card-subtitle">Multi-year trajectory</p>
+              <div style="height:240px; margin-top:14px;"><canvas id="anaYearlyChart"></canvas></div>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">Crime by Month (January → December)</h3>
+              <p class="card-subtitle">Seasonal annual cadence</p>
+              <div style="height:240px; margin-top:14px;"><canvas id="anaMonthlyChart"></canvas></div>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">Crime by Day of the Week</h3>
+              <p class="card-subtitle">Monday → Sunday cadence</p>
+              <div style="height:240px; margin-top:14px;"><canvas id="anaDailyChart"></canvas></div>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">Crime by Hour (00:00 → 23:00)</h3>
+              <p class="card-subtitle">24-hour diurnal curve</p>
+              <div style="height:240px; margin-top:14px;"><canvas id="anaHourlyChart"></canvas></div>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">Crime by 3-Hour Time Window</h3>
+              <p class="card-subtitle">8 standardized operational windows</p>
+              <div style="height:240px; margin-top:14px;"><canvas id="anaTimeWindowChart"></canvas></div>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">Crime by Top Location / Sector</h3>
+              <p class="card-subtitle">Municipal zones with highest incident concentration</p>
+              <div style="height:240px; margin-top:14px;"><canvas id="anaLocationChart"></canvas></div>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">Crime by Season</h3>
+              <p class="card-subtitle">Winter, Summer, Monsoon, Autumn</p>
+              <div style="height:240px; margin-top:14px;"><canvas id="anaSeasonChart"></canvas></div>
+            </div>
+          </div>
+
+          <!-- Heatmaps -->
+          <div class="card" style="margin-bottom:24px;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Day × Time Incident Density Heatmap</h3>
+                <p class="card-subtitle">Correlating Day of Week (Monday–Sunday) with 8 Diurnal Time Windows</p>
+              </div>
+            </div>
+            <div id="anaDayTimeHeatmap" style="overflow-x:auto;"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Month × Time Seasonal Diurnal Heatmap</h3>
+                <p class="card-subtitle">Seasonal shift variations (January–December vs 8 Time Windows)</p>
+              </div>
+            </div>
+            <div id="anaMonthTimeHeatmap" style="overflow-x:auto;"></div>
+          </div>
+        </section>
+
+        <!-- ===========================================================
+             4. INDIA CRIME MAP PAGE
+             =========================================================== -->
+        <section class="page-view" id="page-map">
+          <div class="card-header" style="margin-bottom:16px;">
+            <div>
+              <h2 style="font-size:1.75rem; font-weight:800;">🇮🇳 India Interactive Crime Map</h2>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Spatial visualization of property crime hotspots, municipal risk zones, and geographical clusters.</p>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button class="btn-secondary" onclick="IndiaCrimeMap.map.setView([22.5937, 78.9629], 5)">India Overview</button>
+              <button class="btn-secondary" onclick="IndiaCrimeMap.flyToCity('Mumbai')">Mumbai</button>
+              <button class="btn-secondary" onclick="IndiaCrimeMap.flyToCity('New Delhi')">Delhi</button>
+              <button class="btn-secondary" onclick="IndiaCrimeMap.flyToCity('Bengaluru')">Bengaluru</button>
+              <button class="btn-secondary" onclick="IndiaCrimeMap.flyToCity('Ghaziabad')">Ghaziabad</button>
+            </div>
+          </div>
+
+          <div class="map-view-layout">
+            <div class="map-container-box">
+              <div class="map-control-overlay">
+                <div style="position:relative; flex:1;">
+                  <i class="fa-solid fa-magnifying-glass map-search-icon"></i>
+                  <input type="text" class="map-search-input" id="mapSearchInput" placeholder="Search state, city or zone (e.g., Ghaziabad, Whitefield, Bandra, Colaba)...">
+                </div>
+              </div>
+
+              <!-- Leaflet Map Container -->
+              <div id="indiaMap"></div>
+
+              <!-- Map Legend -->
+              <div class="map-legend-box">
+                <div class="legend-scale-title">Zone Risk Classification</div>
+                <div class="legend-scale-items">
+                  <div class="legend-dot-item"><span class="risk-dot low"></span> LOW (0–39%)</div>
+                  <div class="legend-dot-item"><span class="risk-dot med"></span> MEDIUM (40–69%)</div>
+                  <div class="legend-dot-item"><span class="risk-dot high"></span> HIGH (70–100%)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Zone Details Side Panel -->
+            <div class="zone-panel-box" id="zoneDetailPanel">
+              <div class="zone-panel-header">
+                <span class="zone-city-badge">Sector Inspection</span>
+                <h2 class="zone-title">Select Any Zone</h2>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-top:6px;">
+                  Click any zone marker on the India map to inspect verified crime counts, risk probability, peak diurnal windows, and launch direct prediction.
+                </p>
+              </div>
+
+              <div id="zoneComparisonContainer">
+                <p style="color:var(--text-muted); font-size:0.85rem;">Click zones on the map to compare up to 3 sectors side-by-side.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===========================================================
+             5. PREDICTION PAGE
+             =========================================================== -->
+        <section class="page-view" id="page-prediction">
+          <div class="card-header" style="margin-bottom:18px;">
+            <div>
+              <h2 style="font-size:1.75rem; font-weight:800;">Property Crime Risk Prediction</h2>
+              <p style="color:var(--text-muted); font-size:0.9rem;">
+                Statistical crime-risk forecast for a selected Location, Zone, Property-Crime Category, Date, and Time Window.
+              </p>
+            </div>
+          </div>
+
+          <div class="pred-grid">
+            <!-- Left Console Form -->
+            <div class="card">
+              <h3 style="font-size:1.15rem; margin-bottom:16px;">Forecasting Parameters</h3>
+              <form id="predictionForm">
+                <div style="margin-bottom:14px;">
+                  <label class="filter-lbl" for="predStateSelect">Select State</label>
+                  <select class="form-select" id="predStateSelect" required></select>
+                </div>
+
+                <div style="margin-bottom:14px;">
+                  <label class="filter-lbl" for="predCitySelect">Select City</label>
+                  <select class="form-select" id="predCitySelect" required></select>
+                </div>
+
+                <div style="margin-bottom:14px;">
+                  <label class="filter-lbl" for="predZoneSelect">Select Zone / Area</label>
+                  <select class="form-select" id="predZoneSelect" required></select>
+                </div>
+
+                <div style="margin-bottom:14px;">
+                  <label class="filter-lbl" for="predCrimeTypeSelect">Crime Category</label>
+                  <select class="form-select" id="predCrimeTypeSelect">
+                    <option value="Theft">Theft</option>
+                    <option value="Burglary">Burglary</option>
+                    <option value="Vehicle Theft">Vehicle Theft</option>
+                  </select>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;">
+                  <div>
+                    <label class="filter-lbl" for="predDateInput">Select Date</label>
+                    <input type="date" class="form-input" id="predDateInput" value="2026-10-05" required>
+                  </div>
+                  <div>
+                    <label class="filter-lbl" for="predDayDerived">Derived Day</label>
+                    <input type="text" class="form-input" id="predDayDerived" value="Monday" readonly style="background:var(--bg-app); opacity:0.8;">
+                  </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px;">
+                  <div>
+                    <label class="filter-lbl" for="predTimeInput">Select Time</label>
+                    <input type="time" class="form-input" id="predTimeInput" value="21:30" required>
+                  </div>
+                  <div>
+                    <label class="filter-lbl" for="predTimeWindowSelect">Time Window</label>
+                    <select class="form-select" id="predTimeWindowSelect">
+                      <option value="9 PM – 12 AM">9 PM – 12 AM</option>
+                      <option value="6 PM – 9 PM">6 PM – 9 PM</option>
+                      <option value="3 PM – 6 PM">3 PM – 6 PM</option>
+                      <option value="12 PM – 3 PM">12 PM – 3 PM</option>
+                      <option value="9 AM – 12 PM">9 AM – 12 PM</option>
+                      <option value="6 AM – 9 AM">6 AM – 9 AM</option>
+                      <option value="3 AM – 6 AM">3 AM – 6 AM</option>
+                      <option value="12 AM – 3 AM">12 AM – 3 AM</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-header-cta" style="width:100%; padding:12px; justify-content:center; font-size:1rem;">
+                  <i class="fa-solid fa-calculator"></i> Predict Crime Risk
+                </button>
+              </form>
+            </div>
+
+            <!-- Right Prediction Result Screen -->
+            <div id="predictionResultBox">
+              <div class="card" style="text-align:center; padding:60px 20px; color:var(--text-muted);">
+                <i class="fa-solid fa-radar" style="font-size:3rem; margin-bottom:16px; opacity:0.5;"></i>
+                <h3 style="font-size:1.25rem; color:var(--text-primary); margin-bottom:6px;">Awaiting Prediction Request</h3>
+                <p style="font-size:0.88rem; max-width:440px; margin:0 auto;">
+                  Configure location, date, time window, and crime category on the left, then click <b>Predict Crime Risk</b> to query the backend XGBoost model.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===========================================================
+             6. CRIME TRENDS PAGE
+             =========================================================== -->
+        <section class="page-view" id="page-trends">
+          <div class="card-header" style="margin-bottom:18px;">
+            <div>
+              <h2 style="font-size:1.75rem; font-weight:800;">Crime Trends & Automated Insights</h2>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Longitudinal monthly trajectories and dynamic data-driven insights.</p>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:24px;">
+            <div class="card-header">
+              <h3 class="card-title">Longitudinal Property Crime Trend Over Time</h3>
+            </div>
+            <div style="height:280px;"><canvas id="trendLongitudinalChart"></canvas></div>
+          </div>
+
+          <!-- Monthly Trend Breakdown by Category -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px; margin-bottom:28px;">
+            <div class="card">
+              <h3 class="card-title" style="color:var(--primary-blue);">Theft (Jan–Dec)</h3>
+              <div style="height:180px; margin-top:10px;"><canvas id="trendMonthlyTheft"></canvas></div>
+            </div>
+            <div class="card">
+              <h3 class="card-title" style="color:var(--risk-med);">Burglary (Jan–Dec)</h3>
+              <div style="height:180px; margin-top:10px;"><canvas id="trendMonthlyBurglary"></canvas></div>
+            </div>
+            <div class="card">
+              <h3 class="card-title" style="color:var(--accent-cyan);">Vehicle Theft (Jan–Dec)</h3>
+              <div style="height:180px; margin-top:10px;"><canvas id="trendMonthlyVehicle"></canvas></div>
+            </div>
+          </div>
+
+          <!-- Dynamic Automatic Insights -->
+          <div class="card">
+            <h3 class="card-title" style="margin-bottom:16px;"><i class="fa-solid fa-lightbulb" style="color:var(--risk-med);"></i> Dynamic Automatic Insights</h3>
+            <div id="trendInsightsContainer" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;"></div>
+          </div>
+        </section>
+
+        <!-- ===========================================================
+             7. CRIME HOTSPOTS & CLUSTERS PAGE
+             =========================================================== -->
+        <section class="page-view" id="page-hotspots">
+          <div class="card-header" style="margin-bottom:18px;">
+            <div>
+              <h2 style="font-size:1.75rem; font-weight:800;">Crime Hotspots & Cluster Analysis</h2>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Ranking top crime concentration areas and spatial K-Means cluster groupings.</p>
+            </div>
+          </div>
+
+          <!-- Top Crime Hotspots Table -->
+          <div class="card" style="margin-bottom:28px;">
+            <h3 class="card-title" style="margin-bottom:14px;"><i class="fa-solid fa-fire" style="color:var(--risk-high);"></i> Top Crime Hotspots (Ranking)</h3>
+            <div class="data-table-container">
+              <table class="crime-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Zone</th>
+                    <th>Region</th>
+                    <th>Incident Count</th>
+                    <th>Dominant Crime</th>
+                    <th>Risk Assessment</th>
+                    <th>Peak Window</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="hotspotsTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Spatial Clusters -->
+          <div class="card">
+            <h3 class="card-title" style="margin-bottom:14px;"><i class="fa-solid fa-shapes" style="color:var(--accent-cyan);"></i> Spatial K-Means Cluster Analysis (8 Metropolitan Clusters)</h3>
+            <div id="clustersGridContainer" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px;"></div>
+          </div>
+        </section>
+
+        <!-- ===========================================================
+             8. DATA EXPLORER & DATASET UPLOAD
+             =========================================================== -->
+        <section class="page-view" id="page-data">
+          <div class="card-header" style="margin-bottom:18px;">
+            <div>
+              <h2 style="font-size:1.75rem; font-weight:800;">Data Explorer</h2>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Browse, search, filter, and export verified property crime incident records.</p>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              <button class="btn-secondary" id="btnOpenUpload"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Dataset</button>
+              <button class="btn-secondary" id="btnOpenReset"><i class="fa-solid fa-rotate-left" style="color:var(--risk-med);"></i> Reset Dataset</button>
+              <button class="btn-header-cta" id="btnExportCsv"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
+            </div>
+          </div>
+
+          <!-- Search & Limit Controls -->
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; gap:14px; flex-wrap:wrap;">
+            <input type="text" class="form-input" id="dataSearchInput" placeholder="Search by ID, Zone, City, State, Type..." style="max-width:340px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:0.8rem; color:var(--text-muted);">Rows per page:</span>
+              <select class="form-select" id="dataLimitSelect" style="width:80px;">
+                <option value="10">10</option>
+                <option value="25" selected>25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="data-table-container">
+            <table class="crime-table">
+              <thead>
+                <tr>
+                  <th>Crime ID</th>
+                  <th>Date & Time</th>
+                  <th>State</th>
+                  <th>City</th>
+                  <th>Zone / Area</th>
+                  <th>Crime Type</th>
+                  <th>Time Window</th>
+                  <th>Risk Zone</th>
+                </tr>
+              </thead>
+              <tbody id="dataExplorerBody"></tbody>
+            </table>
+          </div>
+
+          <div class="pagination-bar">
+            <span id="dataPageInfo" style="font-size:0.84rem; color:var(--text-muted);">-</span>
+            <div style="display:flex; gap:8px;">
+              <button class="btn-page" id="btnDataPrev"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+              <button class="btn-page" id="btnDataNext">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===========================================================
+             9. MODEL PERFORMANCE PAGE
+             =========================================================== -->
+        <section class="page-view" id="page-model">
+          <div class="card-header" style="margin-bottom:18px;">
+            <div>
+              <h2 style="font-size:1.75rem; font-weight:800;">Machine Learning Model Performance</h2>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Multi-model algorithmic benchmarking evaluated on held-out 20% test partition.</p>
+            </div>
+          </div>
+
+          <!-- Benchmark Table -->
+          <div class="card" style="margin-bottom:24px;">
+            <h3 class="card-title" style="margin-bottom:12px;">Candidate Model Benchmark (Logistic Regression vs Random Forest vs XGBoost)</h3>
+            <div class="data-table-container">
+              <table class="crime-table">
+                <thead>
+                  <tr>
+                    <th>Algorithm</th>
+                    <th>Accuracy</th>
+                    <th>Weighted Precision</th>
+                    <th>Weighted Recall</th>
+                    <th>Weighted F1 Score</th>
+                  </tr>
+                </thead>
+                <tbody id="modelBenchmarkBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+            <div class="card">
+              <h3 class="card-title" style="margin-bottom:14px;">3-Class Confusion Matrix (XGBoost)</h3>
+              <p class="card-subtitle" style="margin-bottom:16px;">Actual vs Predicted counts for Burglary, Theft, Vehicle Theft</p>
+              <div id="confusionMatrixBox"></div>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title" style="margin-bottom:14px;">Top Feature Importances</h3>
+              <p class="card-subtitle" style="margin-bottom:16px;">Relative weights of spatial, temporal, and categorical predictors</p>
+              <div style="height:300px;"><canvas id="modelFeatureImportanceChart"></canvas></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===========================================================
+             10. ABOUT PAGE
+             =========================================================== -->
+        <section class="page-view" id="page-about">
+          <div class="card-header" style="margin-bottom:18px;">
+            <div>
+              <h2 style="font-size:1.75rem; font-weight:800;">About CrimeVision AI</h2>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Crime Data Analytics & Property Crime Risk Prediction</p>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:24px;">
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:10px;">About CrimeVision AI</h3>
+            <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.6;">
+              CrimeVision AI is a machine-learning based property crime analytics and forecasting platform that combines historical crime data, spatial analysis, temporal patterns and predictive modeling into an interactive web dashboard.
+            </p>
+          </div>
+
+          <div class="card" style="margin-bottom:24px;">
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:14px;">Project Goals</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px;">
+              <div style="background:var(--bg-input); padding:14px; border-radius:8px;">
+                <b style="color:var(--primary-blue);">• Analyze Historical Crime</b>
+                <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">Decompose 5,200 multi-year records across 7 Indian states.</p>
+              </div>
+              <div style="background:var(--bg-input); padding:14px; border-radius:8px;">
+                <b style="color:var(--accent-cyan);">• Identify Geographical Hotspots</b>
+                <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">Apply K-Means clustering and zone risk stratification.</p>
+              </div>
+              <div style="background:var(--bg-input); padding:14px; border-radius:8px;">
+                <b style="color:var(--risk-med);">• Understand Temporal Patterns</b>
+                <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">Analyze diurnal curves across 8 operational 3-hour windows.</p>
+              </div>
+              <div style="background:var(--bg-input); padding:14px; border-radius:8px;">
+                <b style="color:var(--accent-purple);">• Property-Crime Categories</b>
+                <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">Focused exclusively on Theft, Burglary, and Vehicle Theft.</p>
+              </div>
+              <div style="background:var(--bg-input); padding:14px; border-radius:8px;">
+                <b style="color:var(--risk-low);">• Location/Time Risk Estimation</b>
+                <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">Empirical multi-factor probability forecasting.</p>
+              </div>
+              <div style="background:var(--bg-input); padding:14px; border-radius:8px;">
+                <b style="color:var(--text-primary);">• Privacy-Aware Architecture</b>
+                <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">Zero individual profiling, suspect scores, or personal PII.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="disclaimer-banner">
+            <i class="fa-solid fa-lock" style="font-size:1.4rem; margin-top:2px;"></i>
+            <div>
+              <h4 style="font-size:0.95rem; margin-bottom:4px;">Important Privacy & Ethical Safeguards</h4>
+              <p style="font-size:0.84rem; line-height:1.5;">
+                CrimeVision AI operates exclusively at the aggregate zone, temporal window, and property-crime category level. It contains zero suspect profiling, no individual risk scoring, no facial recognition, and no collection of names, personal phone numbers, or Aadhaar details.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- App Footer -->
+      <footer class="app-footer">
+        <div>
+          <b>CrimeVision AI</b> — Crime Data Analytics & Property Crime Risk Prediction
+        </div>
+        <div>
+          <span>CrimeVision AI provides statistical risk forecasts based on historical data. Predictions are not certainties, do not identify individuals, and should not be used as the sole basis for enforcement decisions.</span>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Dataset Upload Modal -->
+  <div class="modal-overlay" id="uploadModal">
+    <div class="modal-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:36px; height:36px; border-radius:8px; background:rgba(59, 130, 246, 0.15); color:var(--primary-blue); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+          </div>
+          <div>
+            <h3 style="font-size:1.25rem; font-weight:800; margin:0;">Upload & Validate Crime Dataset</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">10-Step Automated Ingestion, Quality Checks & Live Activation</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <a href="/api/sample-template" download="crimevision_sample_template.csv" class="btn-secondary" style="font-size:0.8rem; padding:6px 12px; text-decoration:none;">
+            <i class="fa-solid fa-download"></i> Sample CSV
+          </a>
+          <button style="background:none; border:none; color:var(--text-muted); font-size:1.3rem; cursor:pointer; padding:4px 8px;" id="btnCloseUpload" aria-label="Close">✕</button>
+        </div>
+      </div>
+
+      <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:14px; line-height:1.5;">
+        Upload a <b>CSV</b> or <b>XLSX</b> property-crime file. The engine validates column aliases, detects missing values, checks coordinates, verifies categories (<span style="color:var(--primary-blue);">Theft</span>, <span style="color:var(--accent-purple);">Burglary</span>, <span style="color:var(--accent-cyan);">Vehicle Theft</span>), and prepares spatial-temporal features.
+      </p>
+
+      <!-- Drop Zone Area -->
+      <div class="drop-zone" id="fileDropZone">
+        <i class="fa-solid fa-cloud-arrow-up" style="font-size:2.8rem; color:var(--primary-blue); margin-bottom:10px;"></i>
+        <h4 style="font-size:1.05rem; font-weight:700; margin-bottom:4px;">Drag and drop your dataset here</h4>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:12px;">Supports CSV and XLSX spreadsheets (up to 50MB)</p>
+        <div>
+          <button type="button" class="btn-header-cta" id="btnBrowseFile" style="font-size:0.88rem; padding:8px 18px; margin:0 auto;">
+            <i class="fa-solid fa-folder-open"></i> Browse File
+          </button>
+        </div>
+        <input type="file" id="fileUploadInput" accept=".csv, .xlsx, .xls" style="display:none;">
+      </div>
+
+      <!-- Live Upload Status Message -->
+      <div id="uploadStatusBox" style="margin-top:12px;"></div>
+
+      <!-- 10-Step Verification Results Container -->
+      <div id="uploadStepsContainer" style="display:none; margin-top:16px;">
+        <h4 style="font-size:0.92rem; font-weight:700; color:var(--text-secondary); margin-bottom:10px; display:flex; align-items:center; justify-content:space-between;">
+          <span><i class="fa-solid fa-list-check" style="color:var(--primary-blue); margin-right:6px;"></i> 10-Step Ingestion & Quality Audit</span>
+          <span id="uploadStepsSummary" style="font-size:0.8rem; font-weight:600; color:var(--risk-low);"></span>
+        </h4>
+        <div id="uploadStepsList" style="max-height:220px; overflow-y:auto; padding-right:4px;"></div>
+      </div>
+
+      <!-- 5-Row Data Preview Container -->
+      <div id="uploadPreviewContainer" style="display:none; margin-top:16px;">
+        <h4 style="font-size:0.92rem; font-weight:700; color:var(--text-secondary); margin-bottom:8px;">
+          <i class="fa-solid fa-table" style="color:var(--accent-cyan); margin-right:6px;"></i> Ingested Dataset Preview (First 5 Rows)
+        </h4>
+        <div class="upload-preview-table-box" id="uploadPreviewBox"></div>
+      </div>
+
+      <!-- Modal Actions Bar -->
+      <div id="uploadActionsBar" style="display:none; margin-top:20px; padding-top:14px; border-top:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <span id="uploadFileInfoLabel" style="font-size:0.82rem; color:var(--text-muted);"></span>
+        <div style="display:flex; gap:10px;">
+          <button type="button" class="btn-secondary" id="btnCancelUpload">Cancel</button>
+          <button type="button" class="btn-header-cta" id="btnApplyUpload" style="background:var(--risk-low); display:none;">
+            <i class="fa-solid fa-circle-check"></i> Apply Dataset to Platform
+          </button>
+        </div>
+      </div>
+
+      <!-- Reset & Version Control Section inside Upload Modal -->
+      <div style="margin-top:20px; padding:12px 16px; background:var(--bg-input); border-radius:var(--radius-sm); border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div>
+          <div style="font-weight:700; font-size:0.86rem; color:var(--text-primary); display:flex; align-items:center; gap:6px;">
+            <i class="fa-solid fa-clock-rotate-left" style="color:var(--risk-med);"></i> Dataset Reset & Version Control
+          </div>
+          <div style="font-size:0.78rem; color:var(--text-muted); margin-top:2px;" id="uploadModalDatasetStatus">
+            Active: Original Project Dataset (5,200 records)
+          </div>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn-secondary" id="btnUploadModalRestorePrev" style="font-size:0.8rem; padding:6px 12px; display:none;">
+            <i class="fa-solid fa-arrow-rotate-left"></i> Restore Previous
+          </button>
+          <button type="button" class="btn-secondary" id="btnUploadModalResetDefault" style="font-size:0.8rem; padding:6px 12px; color:var(--risk-med); border-color:rgba(245, 158, 11, 0.4);">
+            <i class="fa-solid fa-rotate-left"></i> Reset to Original (5,200)
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dedicated Reset Dataset Modal -->
+  <div class="modal-overlay" id="resetModal">
+    <div class="modal-box" style="max-width:580px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:36px; height:36px; border-radius:8px; background:rgba(245, 158, 11, 0.15); color:var(--risk-med); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+            <i class="fa-solid fa-rotate-left"></i>
+          </div>
+          <div>
+            <h3 style="font-size:1.2rem; font-weight:800; margin:0;">Reset & Restore Dataset</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">Switch between previous upload and verified original design data</p>
+          </div>
+        </div>
+        <button style="background:none; border:none; color:var(--text-muted); font-size:1.3rem; cursor:pointer; padding:4px 8px;" id="btnCloseReset" aria-label="Close">✕</button>
+      </div>
+
+      <div style="background:var(--bg-input); padding:12px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-color); font-size:0.85rem; margin-bottom:16px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <span style="color:var(--text-muted);">Current Active Dataset:</span>
+          <b id="resetCurrentRows">- records</b>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <span style="color:var(--text-muted);">Original Design Dataset:</span>
+          <b id="resetDefaultRows" style="color:var(--risk-low);">5,200 records (7 States)</b>
+        </div>
+        <div style="display:flex; justify-content:space-between;" id="resetPreviousRowBox">
+          <span style="color:var(--text-muted);">Previous Version:</span>
+          <b id="resetPreviousRows" style="color:var(--primary-blue);">No previous upload saved</b>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
+        <button type="button" class="btn-secondary" id="btnDoResetDefault" style="padding:14px 16px; justify-content:flex-start; text-align:left; border:1px solid rgba(245, 158, 11, 0.5); cursor:pointer; background:rgba(245, 158, 11, 0.05);">
+          <div style="display:flex; align-items:center; gap:14px; width:100%;">
+            <i class="fa-solid fa-rotate-left" style="font-size:1.4rem; color:var(--risk-med);"></i>
+            <div>
+              <div style="font-weight:700; color:var(--text-primary); font-size:0.92rem;">Reset to Original Project Design Dataset (5,200 Records)</div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;">Restore the verified multi-state benchmark dataset created during project design (7 states, 8 cities, 36 zones, 2021–2025)</div>
+            </div>
+          </div>
+        </button>
+
+        <button type="button" class="btn-secondary" id="btnDoRestorePrevious" style="padding:14px 16px; justify-content:flex-start; text-align:left; border:1px solid var(--border-color); cursor:pointer;">
+          <div style="display:flex; align-items:center; gap:14px; width:100%;">
+            <i class="fa-solid fa-clock-rotate-left" style="font-size:1.4rem; color:var(--accent-cyan);"></i>
+            <div>
+              <div style="font-weight:700; color:var(--text-primary); font-size:0.92rem;">Restore Previous Uploaded Dataset</div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;" id="btnRestorePrevSubtext">Revert to the dataset active prior to the latest upload</div>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <div id="resetFeedbackBox" style="margin-bottom:14px;"></div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-color); padding-top:12px;">
+        <a href="/api/dataset/download-original" download="crimevision_original_dataset_5200.csv" class="btn-secondary" style="font-size:0.8rem; padding:6px 12px; text-decoration:none;">
+          <i class="fa-solid fa-download"></i> Download 5,200 CSV
+        </a>
+        <button type="button" class="btn-secondary" id="btnCancelReset">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Chart.js 4.4 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- CrimeVision Scripts -->
+  <script src="/static/js/charts.js"></script>
+  <script src="/static/js/map.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
