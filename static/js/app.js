@@ -888,7 +888,7 @@ const CrimeVisionApp = {
             applyBtn.innerHTML = `<i class="fa-solid fa-circle-check"></i> Applied Successfully!`;
             statusBox.innerHTML = `
               <div style="background:rgba(16, 185, 129, 0.2); border:1px solid var(--risk-low); color:var(--risk-low); padding:12px 14px; border-radius:6px; font-size:0.92rem; font-weight:700;">
-                <i class="fa-solid fa-check-double"></i> Dataset applied to CrimeVision AI! All dashboard stats, maps, and models updated.
+                <i class="fa-solid fa-check-double"></i> Dataset applied to CrimeVision! Dashboard stats, maps, and model predictions updated.
               </div>
             `;
 

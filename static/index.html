@@ -47,12 +47,12 @@
         <li class="menu-item"><a class="menu-link" data-page="analytics"><i class="fa-solid fa-chart-line"></i> <span>Crime Analytics</span></a></li>
         <li class="menu-item"><a class="menu-link" data-page="map"><i class="fa-solid fa-map-location-dot"></i> <span>India Crime Map</span></a></li>
 
-        <li class="menu-category">Risk Intelligence</li>
-        <li class="menu-item"><a class="menu-link" data-page="prediction"><i class="fa-solid fa-radar"></i> <span>Prediction</span></a></li>
+        <li class="menu-category">Risk & Patterns</li>
+        <li class="menu-item"><a class="menu-link" data-page="prediction"><i class="fa-solid fa-radar"></i> <span>Risk Prediction</span></a></li>
         <li class="menu-item"><a class="menu-link" data-page="trends"><i class="fa-solid fa-arrow-trend-up"></i> <span>Crime Trends</span></a></li>
         <li class="menu-item"><a class="menu-link" data-page="hotspots"><i class="fa-solid fa-fire"></i> <span>Hotspots & Clusters</span></a></li>
 
-        <li class="menu-category">Platform & Governance</li>
+        <li class="menu-category">Project Details & Data</li>
         <li class="menu-item"><a class="menu-link" data-page="data"><i class="fa-solid fa-database"></i> <span>Data Explorer</span></a></li>
         <li class="menu-item"><a class="menu-link" data-page="model"><i class="fa-solid fa-brain"></i> <span>Model Performance</span></a></li>
         <li class="menu-item"><a class="menu-link" data-page="about"><i class="fa-solid fa-circle-info"></i> <span>About Project</span></a></li>
@@ -61,7 +61,7 @@
       <div class="sidebar-footer">
         <div class="status-badge-box">
           <i class="fa-solid fa-circle" style="color:var(--risk-low); font-size:8px;"></i>
-          <span>System Online · v2.0</span>
+          <span>Project Ready · v2.0</span>
         </div>
       </div>
     </aside>
@@ -74,12 +74,12 @@
       <!-- Top Dashboard Header -->
       <header class="header">
         <div class="header-left">
-          <div class="header-greeting">
-            Good Morning 👋 <span style="font-weight:400; color:var(--text-secondary);">Crime Intelligence Overview</span>
+          <div class="header-greeting" style="font-size:1.1rem; font-weight:700;">
+            CrimeVision <span style="font-weight:400; color:var(--text-secondary); font-size:0.95rem;">· College Project Dashboard</span>
           </div>
           <div class="header-sub">
-            <span>Last data refresh: Dynamic</span>
-            <span class="badge-demo">Demo Dataset — For Educational Demonstration</span>
+            <span>Historical Property Crime Analytics & Machine Learning Risk Prediction</span>
+            <span class="badge-demo">Academic Project Demonstration</span>
           </div>
         </div>
 
@@ -89,10 +89,6 @@
           </button>
           <button class="header-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode">
             <i class="fa-solid fa-sun"></i>
-          </button>
-          <button class="header-btn" title="System Notifications">
-            <i class="fa-solid fa-bell"></i>
-            <span class="notif-badge"></span>
           </button>
           <button class="btn-header-cta" onclick="CrimeVisionApp.showPage('prediction')">
             <i class="fa-solid fa-crosshairs"></i> Predict Risk
@@ -111,47 +107,70 @@
             <div class="hero-content-grid">
               <div>
                 <div class="hero-tag">
-                  <i class="fa-solid fa-shield-halved"></i> Property Crime Intelligence
+                  <i class="fa-solid fa-graduation-cap"></i> Machine Learning Mini-Project
                 </div>
                 <h1 class="hero-heading">
-                  Predict Crime Risk. <br/>
-                  <span class="highlight">Understand Patterns.</span> <br/>
-                  Plan Smarter.
+                  Crime Data Analytics & <br/>
+                  <span class="highlight">Property Crime Risk Prediction</span>
                 </h1>
                 <p class="hero-subtitle-text">
-                  CrimeVision AI analyzes historical property-crime data to identify hotspots, discover temporal patterns, and estimate crime risk for selected locations and time windows across India.
+                  An analytical system developed to examine historical property crime data (Theft, Burglary, and Vehicle Theft) across Indian urban sectors. It uncovers spatial hotspots, evaluates temporal patterns, and estimates zone-level risk using machine learning classification.
                 </p>
                 <div class="hero-ctas">
-                  <button class="btn-header-cta" style="padding:12px 28px; font-size:1rem;" onclick="CrimeVisionApp.showPage('dashboard')">
-                    <i class="fa-solid fa-gauge-high"></i> Explore Dashboard
+                  <button class="btn-header-cta" style="padding:12px 24px; font-size:0.95rem;" onclick="CrimeVisionApp.showPage('dashboard')">
+                    <i class="fa-solid fa-gauge-high"></i> Open Dashboard
                   </button>
-                  <button class="btn-secondary" style="padding:12px 28px; font-size:1rem;" onclick="CrimeVisionApp.showPage('map')">
-                    <i class="fa-solid fa-map-location-dot"></i> Explore Crime Map
+                  <button class="btn-secondary" style="padding:12px 24px; font-size:0.95rem;" onclick="CrimeVisionApp.showPage('prediction')">
+                    <i class="fa-solid fa-radar"></i> Predict Zone Risk
+                  </button>
+                  <button class="btn-secondary" style="padding:12px 24px; font-size:0.95rem;" onclick="CrimeVisionApp.showPage('map')">
+                    <i class="fa-solid fa-map-location-dot"></i> Interactive Map
                   </button>
                 </div>
               </div>
 
-              <!-- Dashboard Preview Visual with Floating Pills -->
+              <!-- Project Workflow & Pipeline Box -->
               <div class="hero-preview-box">
-                <div class="floating-pill pill-1">
-                  <i class="fa-solid fa-triangle-exclamation" style="color:var(--risk-high);"></i>
-                  <div><b>68%</b> <small style="color:var(--text-muted);">Elevated Risk</small></div>
-                </div>
-                <div class="floating-pill pill-2">
-                  <i class="fa-solid fa-location-dot" style="color:var(--risk-med);"></i>
-                  <div><b>Zone 4</b> <small style="color:var(--text-muted);">High-Risk Area</small></div>
-                </div>
-                <div class="floating-pill pill-3">
-                  <i class="fa-solid fa-clock" style="color:var(--primary-blue);"></i>
-                  <div><b>9 PM – 12 AM</b> <small style="color:var(--text-muted);">Peak Window</small></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
+                  <div>
+                    <h3 style="font-size:1.05rem; font-weight:800; color:var(--text-primary); margin:0;">System Pipeline & Methodology</h3>
+                    <p style="font-size:0.78rem; color:var(--text-muted); margin:0;">End-to-End Data Science & Inference Architecture</p>
+                  </div>
+                  <span style="font-size:0.75rem; font-weight:700; color:var(--risk-low); background:var(--risk-low-bg); padding:3px 8px; border-radius:4px;">
+                    Active Model: XGBoost
+                  </span>
                 </div>
 
-                <div style="text-align:center; padding:50px 20px;">
-                  <i class="fa-solid fa-earth-asia" style="font-size:4.5rem; color:var(--primary-blue); opacity:0.8; margin-bottom:16px;"></i>
-                  <h3 style="font-size:1.3rem;">National Property Crime Network</h3>
-                  <p style="font-size:0.88rem; color:var(--text-secondary); max-width:320px; margin:8px auto 0 auto;">
-                    Synthesizing spatial density, diurnal shifts, and machine learning models for municipal security.
-                  </p>
+                <div class="pipeline-step">
+                  <div class="pipeline-step-icon"><i class="fa-solid fa-database"></i></div>
+                  <div>
+                    <div class="pipeline-step-title">1. Dataset Curation & Cleaning</div>
+                    <div class="pipeline-step-desc">5,200 property-crime records (2021–2025) across 7 Indian states, 8 major cities, and 36 municipal sectors.</div>
+                  </div>
+                </div>
+
+                <div class="pipeline-step">
+                  <div class="pipeline-step-icon"><i class="fa-solid fa-filter"></i></div>
+                  <div>
+                    <div class="pipeline-step-title">2. Spatial-Temporal Feature Engineering</div>
+                    <div class="pipeline-step-desc">Extracted 8 diurnal 3-hour windows, seasonal markers, and standardized spatial coordinates (Latitude, Longitude).</div>
+                  </div>
+                </div>
+
+                <div class="pipeline-step">
+                  <div class="pipeline-step-icon"><i class="fa-solid fa-brain"></i></div>
+                  <div>
+                    <div class="pipeline-step-title">3. Multi-Class Classification (XGBoost)</div>
+                    <div class="pipeline-step-desc">Predicts crime categories (Theft, Burglary, Vehicle Theft) benchmarked against Random Forest and Logistic Regression.</div>
+                  </div>
+                </div>
+
+                <div class="pipeline-step" style="margin-bottom:0;">
+                  <div class="pipeline-step-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                  <div>
+                    <div class="pipeline-step-title">4. Multi-Factor Risk Heuristic Scoring</div>
+                    <div class="pipeline-step-desc">Synthesizes historical zone density (30%), time window (25%), day (15%), trend (15%), and ML confidence (15%).</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -307,8 +326,8 @@
             <div class="card">
               <div class="card-header">
                 <div>
-                  <h3 class="card-title">Property Crime Typology</h3>
-                  <p class="card-subtitle">Theft vs Burglary vs Vehicle Theft distribution</p>
+                  <h3 class="card-title">Distribution by Crime Category</h3>
+                  <p class="card-subtitle">Comparison of Theft, Burglary, and Vehicle Theft counts</p>
                 </div>
               </div>
               <div style="height:260px;"><canvas id="dashCategoryDonut"></canvas></div>
@@ -318,7 +337,7 @@
               <div class="card-header">
                 <div>
                   <h3 class="card-title">Yearly Incident Trend (2021–2025)</h3>
-                  <p class="card-subtitle">Longitudinal verification across tracking years</p>
+                  <p class="card-subtitle">Annual incident volume across the 5-year observation period</p>
                 </div>
               </div>
               <div style="height:260px;"><canvas id="dashYearlyTrend"></canvas></div>
@@ -330,7 +349,7 @@
             <div class="card-header">
               <div>
                 <h3 class="card-title"><i class="fa-solid fa-fire" style="color:var(--risk-high);"></i> Top Priority Hotspot Zones</h3>
-                <p class="card-subtitle">Municipal sectors ranking highest in property crime density</p>
+                <p class="card-subtitle">Municipal sectors ranking highest in historical property crime density</p>
               </div>
               <button class="btn-secondary" style="font-size:0.8rem; padding:6px 14px;" onclick="CrimeVisionApp.showPage('hotspots')">
                 View All Hotspots →
@@ -360,7 +379,7 @@
           <div class="card-header" style="margin-bottom:20px;">
             <div>
               <h2 style="font-size:1.75rem; font-weight:800;">Crime Analytics Dashboard</h2>
-              <p style="color:var(--text-muted); font-size:0.9rem;">Multi-dimensional exploratory decomposition across temporal, seasonal, and geographic coordinates.</p>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Exploratory data analysis of property crime patterns across hours, days, months, seasons, and city sectors.</p>
             </div>
           </div>
 
@@ -368,49 +387,49 @@
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(460px, 1fr)); gap:24px; margin-bottom:28px;">
             <div class="card">
               <h3 class="card-title">Crime by Category</h3>
-              <p class="card-subtitle">Theft, Burglary, Vehicle Theft comparison</p>
+              <p class="card-subtitle">Comparison of Theft, Burglary, and Vehicle Theft</p>
               <div style="height:240px; margin-top:14px;"><canvas id="anaCategoryChart"></canvas></div>
             </div>
 
             <div class="card">
               <h3 class="card-title">Crime by Year</h3>
-              <p class="card-subtitle">Multi-year trajectory</p>
+              <p class="card-subtitle">Annual incident count from 2021 to 2025</p>
               <div style="height:240px; margin-top:14px;"><canvas id="anaYearlyChart"></canvas></div>
             </div>
 
             <div class="card">
               <h3 class="card-title">Crime by Month (January → December)</h3>
-              <p class="card-subtitle">Seasonal annual cadence</p>
+              <p class="card-subtitle">Monthly incident distribution</p>
               <div style="height:240px; margin-top:14px;"><canvas id="anaMonthlyChart"></canvas></div>
             </div>
 
             <div class="card">
               <h3 class="card-title">Crime by Day of the Week</h3>
-              <p class="card-subtitle">Monday → Sunday cadence</p>
+              <p class="card-subtitle">Day-of-week incident frequency (Monday to Sunday)</p>
               <div style="height:240px; margin-top:14px;"><canvas id="anaDailyChart"></canvas></div>
             </div>
 
             <div class="card">
               <h3 class="card-title">Crime by Hour (00:00 → 23:00)</h3>
-              <p class="card-subtitle">24-hour diurnal curve</p>
+              <p class="card-subtitle">Hourly distribution over a 24-hour cycle</p>
               <div style="height:240px; margin-top:14px;"><canvas id="anaHourlyChart"></canvas></div>
             </div>
 
             <div class="card">
               <h3 class="card-title">Crime by 3-Hour Time Window</h3>
-              <p class="card-subtitle">8 standardized operational windows</p>
+              <p class="card-subtitle">Incidents grouped across 8 standardized 3-hour windows</p>
               <div style="height:240px; margin-top:14px;"><canvas id="anaTimeWindowChart"></canvas></div>
             </div>
 
             <div class="card">
               <h3 class="card-title">Crime by Top Location / Sector</h3>
-              <p class="card-subtitle">Municipal zones with highest incident concentration</p>
+              <p class="card-subtitle">Sectors with highest historical crime volume</p>
               <div style="height:240px; margin-top:14px;"><canvas id="anaLocationChart"></canvas></div>
             </div>
 
             <div class="card">
               <h3 class="card-title">Crime by Season</h3>
-              <p class="card-subtitle">Winter, Summer, Monsoon, Autumn</p>
+              <p class="card-subtitle">Seasonal distribution (Winter, Summer, Monsoon, Autumn)</p>
               <div style="height:240px; margin-top:14px;"><canvas id="anaSeasonChart"></canvas></div>
             </div>
           </div>
@@ -621,9 +640,9 @@
             </div>
           </div>
 
-          <!-- Dynamic Automatic Insights -->
+          <!-- Key Statistical Findings & Observations -->
           <div class="card">
-            <h3 class="card-title" style="margin-bottom:16px;"><i class="fa-solid fa-lightbulb" style="color:var(--risk-med);"></i> Dynamic Automatic Insights</h3>
+            <h3 class="card-title" style="margin-bottom:16px;"><i class="fa-solid fa-lightbulb" style="color:var(--risk-med);"></i> Key Statistical Findings & Observations</h3>
             <div id="trendInsightsContainer" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;"></div>
           </div>
         </section>
@@ -641,7 +660,7 @@
 
           <!-- Top Crime Hotspots Table -->
           <div class="card" style="margin-bottom:28px;">
-            <h3 class="card-title" style="margin-bottom:14px;"><i class="fa-solid fa-fire" style="color:var(--risk-high);"></i> Top Crime Hotspots (Ranking)</h3>
+            <h3 class="card-title" style="margin-bottom:14px;"><i class="fa-solid fa-fire" style="color:var(--risk-high);"></i> Top Crime Hotspots by Sector Volume</h3>
             <div class="data-table-container">
               <table class="crime-table">
                 <thead>
@@ -771,59 +790,147 @@
         </section>
 
         <!-- ===========================================================
-             10. ABOUT PAGE
+             10. ABOUT PAGE / PROJECT DOCUMENTATION
              =========================================================== -->
         <section class="page-view" id="page-about">
           <div class="card-header" style="margin-bottom:18px;">
             <div>
-              <h2 style="font-size:1.75rem; font-weight:800;">About CrimeVision AI</h2>
-              <p style="color:var(--text-muted); font-size:0.9rem;">Crime Data Analytics & Property Crime Risk Prediction</p>
+              <h2 style="font-size:1.75rem; font-weight:800;">About CrimeVision Project</h2>
+              <p style="color:var(--text-muted); font-size:0.9rem;">College Project Documentation · Crime Data Analytics & Property Crime Risk Prediction Using Machine Learning</p>
+            </div>
+            <div>
+              <span class="badge-demo" style="font-size:0.8rem; padding:6px 14px;">B.Tech / MCA Mini-Project</span>
             </div>
           </div>
 
+          <!-- Project Abstract Card -->
           <div class="card" style="margin-bottom:24px;">
-            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:10px;">About CrimeVision AI</h3>
-            <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.6;">
-              CrimeVision AI is a machine-learning based property crime analytics and forecasting platform that combines historical crime data, spatial analysis, temporal patterns and predictive modeling into an interactive web dashboard.
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+              <div style="width:36px; height:36px; border-radius:8px; background:rgba(59, 130, 246, 0.15); color:var(--primary-blue); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+                <i class="fa-solid fa-book-open"></i>
+              </div>
+              <h3 style="font-size:1.25rem; font-weight:700; margin:0;">Project Overview & Abstract</h3>
+            </div>
+            <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.7; margin-bottom:12px;">
+              <b>CrimeVision</b> is an applied data science and machine learning project designed to study property-related crimes across urban sectors in India. By analyzing historical incident records covering <b>Theft</b>, <b>Burglary</b>, and <b>Vehicle Theft</b> across 7 Indian states from <b>2021 to 2025</b>, the system identifies spatial hotspots, uncovers temporal trends, and generates zone-level risk estimations for specified dates and time windows.
+            </p>
+            <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.7; margin:0;">
+              Unlike generic dashboards that rely on static summaries or arbitrary scores, CrimeVision uses an integrated machine-learning pipeline: candidate classification models (XGBoost, Random Forest, Logistic Regression) are trained on preprocessed spatial and temporal features, and an empirical 5-factor weighted heuristic synthesizes historical incident density, diurnal window frequencies, and model probabilities into an actionable risk assessment.
             </p>
           </div>
 
+          <!-- System Architecture & Methodology -->
           <div class="card" style="margin-bottom:24px;">
-            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:14px;">Project Goals</h3>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px;">
-              <div style="background:var(--bg-input); padding:14px; border-radius:8px;">
-                <b style="color:var(--primary-blue);">• Analyze Historical Crime</b>
-                <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">Decompose 5,200 multi-year records across 7 Indian states.</p>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+              <div style="width:36px; height:36px; border-radius:8px; background:rgba(6, 182, 212, 0.15); color:var(--accent-cyan); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+                <i class="fa-solid fa-diagram-project"></i>
               </div>
-              <div style="background:var(--bg-input); padding:14px; border-radius:8px;">
-                <b style="color:var(--accent-cyan);">• Identify Geographical Hotspots</b>
-                <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">Apply K-Means clustering and zone risk stratification.</p>
+              <h3 style="font-size:1.25rem; font-weight:700; margin:0;">System Architecture & Data Pipeline</h3>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:14px; margin-bottom:18px;">
+              <div style="background:var(--bg-input); padding:16px; border-radius:8px; border-top:3px solid var(--primary-blue);">
+                <div style="font-weight:700; color:var(--text-primary); margin-bottom:6px; font-size:0.92rem;">1. Data Collection & Cleaning</div>
+                <p style="font-size:0.83rem; color:var(--text-muted); line-height:1.5;">
+                  Collection of 5,200 multi-state incident records across 36 urban sectors. Cleans timestamp inconsistencies, verifies latitude/longitude bounds, and removes corrupted records.
+                </p>
               </div>
-              <div style="background:var(--bg-input); padding:14px; border-radius:8px;">
-                <b style="color:var(--risk-med);">• Understand Temporal Patterns</b>
-                <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">Analyze diurnal curves across 8 operational 3-hour windows.</p>
+
+              <div style="background:var(--bg-input); padding:16px; border-radius:8px; border-top:3px solid var(--accent-cyan);">
+                <div style="font-weight:700; color:var(--text-primary); margin-bottom:6px; font-size:0.92rem;">2. Feature Engineering</div>
+                <p style="font-size:0.83rem; color:var(--text-muted); line-height:1.5;">
+                  Extraction of 8 standardized 3-hour diurnal windows (e.g. 9 PM – 12 AM), calendar seasons (Winter, Summer, Monsoon, Autumn), and centroid spatial aggregation.
+                </p>
               </div>
-              <div style="background:var(--bg-input); padding:14px; border-radius:8px;">
-                <b style="color:var(--accent-purple);">• Property-Crime Categories</b>
-                <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">Focused exclusively on Theft, Burglary, and Vehicle Theft.</p>
+
+              <div style="background:var(--bg-input); padding:16px; border-radius:8px; border-top:3px solid var(--accent-purple);">
+                <div style="font-weight:700; color:var(--text-primary); margin-bottom:6px; font-size:0.92rem;">3. Model Training & Validation</div>
+                <p style="font-size:0.83rem; color:var(--text-muted); line-height:1.5;">
+                  Preprocessed with StandardScaler (numerical) and OneHotEncoder (categorical). Evaluated with 80/20 train-test split across Accuracy, Precision, Recall, and Confusion Matrix.
+                </p>
               </div>
-              <div style="background:var(--bg-input); padding:14px; border-radius:8px;">
-                <b style="color:var(--risk-low);">• Location/Time Risk Estimation</b>
-                <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">Empirical multi-factor probability forecasting.</p>
-              </div>
-              <div style="background:var(--bg-input); padding:14px; border-radius:8px;">
-                <b style="color:var(--text-primary);">• Privacy-Aware Architecture</b>
-                <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">Zero individual profiling, suspect scores, or personal PII.</p>
+
+              <div style="background:var(--bg-input); padding:16px; border-radius:8px; border-top:3px solid var(--risk-low);">
+                <div style="font-weight:700; color:var(--text-primary); margin-bottom:6px; font-size:0.92rem;">4. Fast Production Inference</div>
+                <p style="font-size:0.83rem; color:var(--text-muted); line-height:1.5;">
+                  Optimized zero-dependency vectorized tree evaluation in pure Python/NumPy, enabling sub-millisecond predictions within Vercel serverless function memory limits.
+                </p>
               </div>
             </div>
           </div>
 
+          <!-- Dataset Specifications & Technology Stack -->
+          <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:24px; margin-bottom:24px;">
+            <div class="card">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+                <div style="width:36px; height:36px; border-radius:8px; background:rgba(245, 158, 11, 0.15); color:var(--risk-med); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+                  <i class="fa-solid fa-table"></i>
+                </div>
+                <h3 style="font-size:1.15rem; font-weight:700; margin:0;">Dataset Specifications</h3>
+              </div>
+              <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+                <tr style="border-bottom:1px solid var(--border-color);">
+                  <td style="padding:8px 0; color:var(--text-muted); width:150px;">Total Record Count</td>
+                  <td style="padding:8px 0; font-weight:600;">5,200 Verified Incidents</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border-color);">
+                  <td style="padding:8px 0; color:var(--text-muted);">Observation Period</td>
+                  <td style="padding:8px 0; font-weight:600;">2021 – 2025 (5 Longitudinal Years)</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border-color);">
+                  <td style="padding:8px 0; color:var(--text-muted);">Geographical Scope</td>
+                  <td style="padding:8px 0; font-weight:600;">7 States / UTs, 8 Cities, 36 Municipal Sectors</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border-color);">
+                  <td style="padding:8px 0; color:var(--text-muted);">Crime Categories</td>
+                  <td style="padding:8px 0; font-weight:600;">Theft, Burglary, Vehicle Theft</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border-color);">
+                  <td style="padding:8px 0; color:var(--text-muted);">Primary Features</td>
+                  <td style="padding:8px 0; font-weight:600;">Hour, Year, Latitude, Longitude, Day, State, City, Zone, Time Window</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="card">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+                <div style="width:36px; height:36px; border-radius:8px; background:rgba(139, 92, 246, 0.15); color:var(--accent-purple); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+                  <i class="fa-solid fa-code"></i>
+                </div>
+                <h3 style="font-size:1.15rem; font-weight:700; margin:0;">Technology Stack</h3>
+              </div>
+              <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+                <tr style="border-bottom:1px solid var(--border-color);">
+                  <td style="padding:8px 0; color:var(--text-muted); width:130px;">Backend API</td>
+                  <td style="padding:8px 0; font-weight:600;">Python 3.11+, FastAPI, Uvicorn</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border-color);">
+                  <td style="padding:8px 0; color:var(--text-muted);">Data Science</td>
+                  <td style="padding:8px 0; font-weight:600;">Pandas, NumPy, Scikit-learn</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border-color);">
+                  <td style="padding:8px 0; color:var(--text-muted);">Machine Learning</td>
+                  <td style="padding:8px 0; font-weight:600;">XGBoost Classifier (Compact JSON Engine)</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border-color);">
+                  <td style="padding:8px 0; color:var(--text-muted);">Visualizations</td>
+                  <td style="padding:8px 0; font-weight:600;">Chart.js 4.4, Leaflet.js (OpenStreetMap)</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border-color);">
+                  <td style="padding:8px 0; color:var(--text-muted);">Deployment</td>
+                  <td style="padding:8px 0; font-weight:600;">Vercel Serverless Functions + GitHub CI</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <!-- Ethical & Privacy Safeguards Banner -->
           <div class="disclaimer-banner">
-            <i class="fa-solid fa-lock" style="font-size:1.4rem; margin-top:2px;"></i>
+            <i class="fa-solid fa-shield-halved" style="font-size:1.4rem; margin-top:2px; color:var(--primary-blue);"></i>
             <div>
-              <h4 style="font-size:0.95rem; margin-bottom:4px;">Important Privacy & Ethical Safeguards</h4>
-              <p style="font-size:0.84rem; line-height:1.5;">
-                CrimeVision AI operates exclusively at the aggregate zone, temporal window, and property-crime category level. It contains zero suspect profiling, no individual risk scoring, no facial recognition, and no collection of names, personal phone numbers, or Aadhaar details.
+              <h4 style="font-size:0.95rem; margin-bottom:4px; font-weight:700;">Academic Privacy & Ethical Safeguards</h4>
+              <p style="font-size:0.84rem; line-height:1.5; color:var(--text-secondary); margin:0;">
+                CrimeVision operates exclusively at the aggregate municipal zone and property-crime category level. In compliance with data ethics guidelines, the system contains <b>no suspect profiling</b>, <b>no individual scoring</b>, <b>no facial recognition</b>, and <b>no collection of personal identifying information (PII)</b> like names, addresses, or phone numbers. All predictions are statistical estimates derived from historical patterns.
               </p>
             </div>
           </div>
@@ -834,10 +941,10 @@
       <!-- App Footer -->
       <footer class="app-footer">
         <div>
-          <b>CrimeVision AI</b> — Crime Data Analytics & Property Crime Risk Prediction
+          <b>CrimeVision</b> — Crime Data Analytics & Property Crime Risk Prediction Using Machine Learning
         </div>
         <div>
-          <span>CrimeVision AI provides statistical risk forecasts based on historical data. Predictions are not certainties, do not identify individuals, and should not be used as the sole basis for enforcement decisions.</span>
+          <span>College Project Demonstration · Built with Python, FastAPI, XGBoost, Chart.js & Leaflet.js · Predictions represent statistical estimates based on historical patterns</span>
         </div>
       </footer>
 

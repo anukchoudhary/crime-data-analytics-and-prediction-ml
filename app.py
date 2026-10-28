@@ -19,7 +19,7 @@ STATIC_DIR = BASE_DIR / "static"
 from backend.crimevision_engine import engine
 
 app = FastAPI(
-    title="CrimeVision AI API",
+    title="CrimeVision API",
     description="Crime Data Analytics & Property Crime Risk Prediction Engine",
     version="2.0.0"
 )
@@ -47,14 +47,14 @@ class ComparePayload(BaseModel):
 
 @app.get("/api/health")
 def get_health():
+    is_loaded = (engine.light_predictor is not None and engine.light_predictor.loaded) or (engine.model is not None)
     return {
         "status": "online",
-        "service": "CrimeVision AI Engine",
-        "system_status": "🟢 ML System Online",
-        "demo_mode": True,
-        "dataset_label": "Demo Dataset — For Educational Demonstration",
+        "service": "CrimeVision Analytics Engine",
+        "system_status": "Ready",
+        "dataset_label": "Property Crime Dataset (2021–2025)",
         "total_records": len(engine.df),
-        "model_loaded": engine.model is not None
+        "model_loaded": is_loaded
     }
 
 @app.get("/api/dashboard-summary")
@@ -171,6 +171,7 @@ def get_clusters():
     return engine.clusters
 
 @app.get("/api/model-performance")
+@app.get("/api/model/performance")
 def get_model_performance():
     return engine.metrics
 

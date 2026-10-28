@@ -687,7 +687,7 @@ class CrimeVisionEngine:
             "class_probabilities": class_probabilities,
             "pattern_signals": signals,
             "feature_importance": feature_imp,
-            "disclaimer": "CrimeVision AI provides a statistical forecast based on historical patterns. It is not a certainty, does not identify individuals, and should not be used as the sole basis for enforcement decisions."
+            "disclaimer": "CrimeVision provides a statistical risk estimate derived from historical patterns. It does not predict individuals or certainty, and serves strictly as an analytical decision-support tool."
         }
 
     def compare_zones(self, zone_names: List[str]) -> List[Dict[str, Any]]:

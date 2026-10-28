@@ -546,40 +546,56 @@ body {
   border-color: var(--text-muted);
 }
 
-/* Hero Visual & Floating Cards */
+/* Hero Visual & Project Pipeline Box */
 .hero-preview-box {
-  position: relative;
-  background: linear-gradient(145deg, rgba(17, 24, 39, 0.9), rgba(15, 23, 42, 0.95));
-  border: 1px solid var(--border-accent);
-  border-radius: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
   padding: 24px;
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
-.floating-pill {
-  position: absolute;
-  background: rgba(17, 24, 39, 0.92);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 10px 14px;
-  box-shadow: var(--shadow-md);
+.pipeline-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 14px;
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--primary-blue);
+  margin-bottom: 10px;
+  transition: var(--transition);
+}
+
+.pipeline-step:hover {
+  background: var(--bg-card-hover);
+  border-left-color: var(--accent-cyan);
+}
+
+.pipeline-step-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--primary-blue);
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.85rem;
-  animation: float 4s ease-in-out infinite;
-  z-index: 10;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
 }
 
-.pill-1 { top: 20px; left: 20px; border-left: 3px solid var(--risk-high); }
-.pill-2 { bottom: 30px; left: 30px; border-left: 3px solid var(--risk-med); animation-delay: 1.5s; }
-.pill-3 { top: 70px; right: 20px; border-left: 3px solid var(--primary-blue); animation-delay: 2.5s; }
+.pipeline-step-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+.pipeline-step-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
 }
 
 /* Dynamic Stats Grid */
