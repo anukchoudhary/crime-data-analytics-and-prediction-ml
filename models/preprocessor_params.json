@@ -1,0 +1,105 @@
+{
+  "num_cols": [
+    "Hour",
+    "Year",
+    "Latitude",
+    "Longitude"
+  ],
+  "means": [
+    14.02548076923077,
+    2022.984375,
+    20.909693289423075,
+    77.2090454920673
+  ],
+  "scales": [
+    6.53370144531821,
+    1.4053455959266334,
+    5.936541475135614,
+    3.9618450303379853
+  ],
+  "cat_cols": [
+    "Day",
+    "State",
+    "City",
+    "Zone",
+    "Time_Window"
+  ],
+  "categories": [
+    [
+      "Friday",
+      "Monday",
+      "Saturday",
+      "Sunday",
+      "Thursday",
+      "Tuesday",
+      "Wednesday"
+    ],
+    [
+      "Delhi NCT",
+      "Karnataka",
+      "Maharashtra",
+      "Tamil Nadu",
+      "Telangana",
+      "Uttar Pradesh",
+      "West Bengal"
+    ],
+    [
+      "Bengaluru",
+      "Chennai",
+      "Ghaziabad",
+      "Hyderabad",
+      "Kolkata",
+      "Mumbai",
+      "New Delhi",
+      "Pune"
+    ],
+    [
+      "Zone 1 - Coastal CBD",
+      "Zone 1 - Connaught Hub",
+      "Zone 1 - Cyberabad",
+      "Zone 1 - IT City",
+      "Zone 1 - Sector V IT",
+      "Zone 1 - South Hub",
+      "Zone 1 - Tech Corridor",
+      "Zone 1 - Transit Hub",
+      "Zone 2 - Central Market",
+      "Zone 2 - Commercial Belt",
+      "Zone 2 - Heritage Central",
+      "Zone 2 - IT Expressway",
+      "Zone 2 - Innovation Belt",
+      "Zone 2 - Old City",
+      "Zone 2 - Old Core",
+      "Zone 2 - South Ring",
+      "Zone 3 - Airport Corridor",
+      "Zone 3 - Central CBD",
+      "Zone 3 - Commercial Hub",
+      "Zone 3 - Eastern Hub",
+      "Zone 3 - Industrial Sector",
+      "Zone 3 - North Sector",
+      "Zone 3 - South Residential",
+      "Zone 3 - West Commercial",
+      "Zone 4 - High-Risk Area",
+      "Zone 4 - North Campus",
+      "Zone 4 - North Station Hub",
+      "Zone 4 - South Hub",
+      "Zone 4 - South Sector",
+      "Zone 4 - Tech Park",
+      "Zone 4 - Transit Junction",
+      "Zone 4 - West Commercial",
+      "Zone 5 - East Terminal",
+      "Zone 5 - Highway Node",
+      "Zone 5 - North Hub",
+      "Zone 5 - Suburban North"
+    ],
+    [
+      "12 AM \u2013 3 AM",
+      "12 PM \u2013 3 PM",
+      "3 AM \u2013 6 AM",
+      "3 PM \u2013 6 PM",
+      "6 AM \u2013 9 AM",
+      "6 PM \u2013 9 PM",
+      "9 AM \u2013 12 PM",
+      "9 PM \u2013 12 AM"
+    ]
+  ]
+}

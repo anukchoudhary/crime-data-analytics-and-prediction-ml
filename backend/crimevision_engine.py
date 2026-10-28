@@ -11,7 +11,19 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional
 import numpy as np
 import pandas as pd
-import joblib
+
+try:
+    import joblib
+except ImportError:
+    joblib = None
+
+try:
+    from backend.light_predictor import LightPredictor
+except ImportError:
+    try:
+        from light_predictor import LightPredictor
+    except ImportError:
+        LightPredictor = None
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_PATH = BASE_DIR / "data" / "india_property_crime.csv"
@@ -78,6 +90,7 @@ RISK_CONFIG = {
 class CrimeVisionEngine:
     def __init__(self):
         self.df: pd.DataFrame = pd.DataFrame()
+        self.light_predictor: Any = None
         self.model: Any = None
         self.preprocessor: Any = None
         self.label_encoder: Any = None
@@ -137,7 +150,15 @@ class CrimeVisionEngine:
             }
 
     def load_model(self):
-        if MODEL_PATH.exists() and PREPROCESSOR_PATH.exists():
+        if LightPredictor is not None:
+            try:
+                lp = LightPredictor()
+                if lp.loaded:
+                    self.light_predictor = lp
+            except Exception as e:
+                print(f"[CrimeVisionEngine] LightPredictor loading note: {e}")
+
+        if joblib is not None and MODEL_PATH.exists() and PREPROCESSOR_PATH.exists():
             try:
                 self.model = joblib.load(MODEL_PATH)
                 self.preprocessor = joblib.load(PREPROCESSOR_PATH)
@@ -528,7 +549,27 @@ class CrimeVisionEngine:
         model_prob = 0.45
         class_probabilities = {}
 
-        if self.model and self.preprocessor:
+        if self.light_predictor and self.light_predictor.loaded:
+            try:
+                centroid = self.zone_profiles.get(zone, {})
+                lat = centroid.get("lat", 28.6139)
+                lng = centroid.get("lng", 77.2090)
+
+                input_dict = {
+                    "Hour": hour,
+                    "Year": year,
+                    "Latitude": lat,
+                    "Longitude": lng,
+                    "Day": day_name,
+                    "State": state,
+                    "City": city,
+                    "Zone": zone,
+                    "Time_Window": time_window
+                }
+                predicted_category, model_prob, class_probabilities = self.light_predictor.predict(input_dict)
+            except Exception as e:
+                print(f"[CrimeVisionEngine] LightPredictor inference note: {e}")
+        elif self.model and self.preprocessor:
             try:
                 # Find centroid
                 centroid = self.zone_profiles.get(zone, {})

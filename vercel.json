@@ -1,5 +1,10 @@
 {
   "version": 2,
+  "functions": {
+    "api/index.py": {
+      "excludeFiles": "{static/**,data/previous_dataset.csv,models/confusion_matrix.png}"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
